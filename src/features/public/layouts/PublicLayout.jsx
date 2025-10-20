@@ -11,7 +11,7 @@ const PublicLayout = () => {
   }, []);
 
   return (
-    <main className="bg-gradient-to-bl from-indigo-500 via-purple-500 to-pink-500 flex flex-col h-dvh">
+    <main className="bg-gradient-to-r from-blue-500 to-purple-600 flex flex-col h-dvh">
       <Header />
       <Outlet />
       <Toaster

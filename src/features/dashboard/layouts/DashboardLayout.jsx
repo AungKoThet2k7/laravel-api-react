@@ -1,11 +1,19 @@
 import React from "react";
 import Header from "./Header";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import reactUseCookie from "react-use-cookie";
 
 const DashboardLayout = () => {
+
+  const [tokenCookie] = reactUseCookie('token');
+
+  if (!tokenCookie) {
+    return <Navigate to="/login" />;
+  }
+
   return (
-    <>
+    <main className="bg-gray-100">
       <Header />
       <Outlet />
       <Toaster
@@ -17,7 +25,7 @@ const DashboardLayout = () => {
           },
         }}
       />
-    </>
+    </main>
   );
 };
 

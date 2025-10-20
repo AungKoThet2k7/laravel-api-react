@@ -6,6 +6,7 @@ import LoginPage from "../features/auth/pages/Loginpage";
 import RegisterPage from "../features/auth/pages/RegisterPage";
 import DashboardPage from "../features/dashboard/pages/DashboardPage";
 import DashboardLayout from "../features/dashboard/layouts/DashboardLayout";
+import ProductPage from "../features/products/pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <DashboardPage />,
+      },
+      {
+        path: "products",
+        element: <ProductPage />,
       },
     ],
   },

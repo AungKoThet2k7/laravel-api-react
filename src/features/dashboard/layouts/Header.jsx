@@ -11,11 +11,15 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await api.post("/logout", {},{
-        headers : {
-          "Authorization" : `Bearer ${tokenCookie}`
+      const res = await api.post(
+        "/logout",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${tokenCookie}`,
+          },
         }
-      });
+      );
       if (res.data.success === true) {
         removeCookie("token");
         removeCookie("user");
@@ -28,7 +32,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white border-gray-200 shadow-sm">
+    <nav className="bg-white border-gray-200 shadow-md">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"
@@ -40,19 +44,71 @@ const Header = () => {
           className="font-medium flex rounded-lg
            flex-row md:space-x-8 rtl:space-x-reverse mt-0 bg-white"
         >
-          <li>
+          <li className="my-auto mx-auto">
             <Link
-              to="/"
-              className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+              to="/dashboard"
+              className="py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg bg-white text-gray-800 hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
-              Home
+              DashBoard
             </Link>
           </li>
 
-          <li>
+          <li className="my-auto mx-auto">
+            <div className=" hs-dropdown [--trigger:hover] relative inline-flex">
+              <button
+                id="hs-dropdown-hover-event"
+                type="button"
+                className="hs-dropdown-toggle py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg bg-white text-gray-800 hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-label="Dropdown"
+              >
+                Product
+                <svg
+                  className="hs-dropdown-open:rotate-180 size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+
+              <div
+                className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md border border-gray-100 rounded-lg mt-2 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="hs-dropdown-hover-event"
+              >
+                <div className="p-1 space-y-0.5">
+                  <Link
+                    to={"/dashboard/products"}
+                    className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100"
+                  >
+                    Products list
+                  </Link>
+
+                  <Link
+                    to={"/dashboard/products"}
+                    className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100"
+                  >
+                    New Product
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li className="my-auto mx-auto">
             <button
               onClick={handleLogout}
-              className=" cursor-pointer block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+              className=" cursor-pointer py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg bg-white text-gray-800 hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
               Logout
             </button>
