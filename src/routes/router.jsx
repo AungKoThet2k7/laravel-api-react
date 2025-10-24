@@ -7,6 +7,7 @@ import RegisterPage from "../features/auth/pages/RegisterPage";
 import DashboardPage from "../features/dashboard/pages/DashboardPage";
 import DashboardLayout from "../features/dashboard/layouts/DashboardLayout";
 import ProductPage from "../features/products/pages/ProductPage";
+import ProductCreatePage from "../features/products/pages/ProductCreatePage";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "products",
         element: <ProductPage />,
+      },
+      {
+        path: "product-create",
+        element: <ProductCreatePage />,
       },
     ],
   },

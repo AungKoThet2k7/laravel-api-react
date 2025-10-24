@@ -13,7 +13,7 @@ const DashboardLayout = () => {
   }
 
   return (
-    <main className="bg-gray-100">
+    <main className="bg-gray-100 min-h-dvh">
       <Header />
       <Outlet />
       <Toaster

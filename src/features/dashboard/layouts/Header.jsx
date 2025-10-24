@@ -10,6 +10,8 @@ const Header = () => {
   const [tokenCookie] = reactUseCookie("token");
 
   const handleLogout = async () => {
+    removeCookie("token");
+    removeCookie("user");
     try {
       const res = await api.post(
         "/logout",
@@ -21,8 +23,6 @@ const Header = () => {
         }
       );
       if (res.data.success === true) {
-        removeCookie("token");
-        removeCookie("user");
         navigate("/");
         toast.success("Logout Success");
       }
@@ -49,7 +49,7 @@ const Header = () => {
               to="/dashboard"
               className="py-2 px-3 inline-flex items-center gap-x-2 font-medium rounded-lg bg-white text-gray-800 hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
-              DashBoard
+              Dashboard
             </Link>
           </li>
 
@@ -81,7 +81,7 @@ const Header = () => {
               </button>
 
               <div
-                className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md border border-gray-100 rounded-lg mt-2 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
+                className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-32 bg-white shadow-md border border-gray-100 rounded-lg mt-2 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="hs-dropdown-hover-event"
@@ -95,7 +95,7 @@ const Header = () => {
                   </Link>
 
                   <Link
-                    to={"/dashboard/products"}
+                    to={"/dashboard/product-create"}
                     className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100"
                   >
                     New Product
